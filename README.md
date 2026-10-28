@@ -1,3 +1,13 @@
+<p align="center">
+  <a href="https://ryoeh.github.io">
+    <img src="https://img.pixelvault.dev/playground/tmp_gaqwd70c02y1.png" width="100%" alt="Website preview">
+  </a>
+  <br>
+  <a href="https://github.com/ryoeh/REPOSITORY-NAME">
+    <img src="https://img.shields.io/badge/View_Source-GitHub-0D1117?style=flat&logo=github&logoColor=white" alt="View source">
+  </a>
+</p>
+
 # ⚪ Dot Matrix & Cyber Interactive Portfolio
 
 A minimalist, high-tech personal website built with dot matrix typography, reactive LED glyph light animations, procedural Web Audio, and retro arcade games. Designed specifically to pair with your GitHub profile and showcase your journey in IT, Cybersecurity, and Networking.
