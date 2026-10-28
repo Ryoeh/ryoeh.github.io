@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryoeh</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23D71921'/></svg>">
+</head>
+<body>
+  <!-- Interactive Dot Matrix Background Canvas -->
+  <canvas id="dot-canvas"></canvas>
+  <div class="vignette-overlay"></div>
+
+  <div class="site-wrapper">
+    <!-- ====================================================================
+         SLIM AIRY LIQUID GLASS NAVBAR
+         ==================================================================== -->
+    <header class="navbar-container">
+      <nav class="navbar-slim">
+        <a href="#" class="nav-brand" title="RYOEH Portfolio">
+          <span class="red-indicator"></span>
+          <span class="brand-text">RYOEH</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#qualifications" class="nav-link">Certs</a></li>
+          <li><a href="#lab" class="nav-link">Lab</a></li>
+          <li><a href="#mindset" class="nav-link">Mindset</a></li>
+          <li><a href="#quote" class="nav-link">Code</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <span class="clock-pill" id="live-clock">00:00:00</span>
+          <button class="icon-btn icon-only active" id="sound-toggle-btn" title="Toggle Audio (Synth & Clicks)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </button>
+          <button class="icon-btn icon-only" id="theme-toggle-btn" title="Toggle Light / Dark Theme">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button class="icon-btn icon-only" id="torch-toggle-btn" title="Toggle Flash Torch">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ====================================================================
+         HERO SECTION (2-COLUMN: RYOEH + GLYPH LIGHT ENGINE)
+         ==================================================================== -->
+    <section class="hero-grid">
+      <!-- Left Column: Bio & Authentic Circular Dot Matrix Headline -->
+      <div class="hero-left">
+        <div class="hero-tag">
+          <span class="red-indicator"></span>
+          <span>// IT & CYBERSECURITY OPERATOR</span>
+        </div>
+
+        <!-- Authentic Circular White LED Dot Matrix Headline for RYOEH -->
+        <div class="dot-matrix-headline" id="ryoeh-dot-matrix" title="Click for light ripple wave!">
+          <!-- R -->
+          <div class="dot-char-grid" data-char="R">
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+          </div>
+
+          <!-- Y -->
+          <div class="dot-char-grid" data-char="Y">
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+          </div>
+
+          <!-- O -->
+          <div class="dot-char-grid" data-char="O">
+            <span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+          </div>
+
+          <!-- E -->
+          <div class="dot-char-grid" data-char="E">
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span>
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span>
+          </div>
+
+          <!-- H -->
+          <div class="dot-char-grid" data-char="H">
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+            <span class="dot-cell on"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell"></span><span class="dot-cell on"></span>
+          </div>
+        </div>
+
+        <p class="hero-lead-text">
+          Curious about what happens under the hood. Learning IT, networking, and cybersecurity by breaking and building.
+        </p>
+
+        <p class="hero-description">
+          I like figuring things out, breaking stuff in a safe lab, and learning by doing. I'd rather understand how something works than just know how to use it.
+        </p>
+
+        <div class="hero-pill-strip">
+          <span class="pill-item"><span class="led"></span>IT STUDENT</span>
+          <span class="pill-item"><span class="led"></span>CYBERSECURITY & DEFENSE</span>
+          <span class="pill-item"><span class="led"></span>NETWORKING</span>
+          <span class="pill-item"><span class="led"></span>LEARN BY DOING</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#lab" class="btn-clean-primary">EXPLORE LAB →</a>
+          <a href="#qualifications" class="btn-clean-secondary">QUALIFICATIONS</a>
+          <a href="#terminal-section" class="btn-clean-secondary">DEBUG CONSOLE</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Glowing Glyph Light Console (Fills Blank Space with Nothing OS Lights) -->
+      <div class="hero-right">
+        <div class="hero-glyph-ambient"></div>
+        <div class="hero-glyph-card liquid-panel">
+          <div class="hero-glyph-header">
+            <span>GLYPH INTERFACE // LIGHT ENGINE</span>
+            <div class="glyph-audio-bars" title="Audio / Activity Visualizer">
+              <span class="audio-bar-seg"></span>
+              <span class="audio-bar-seg"></span>
+              <span class="audio-bar-seg"></span>
+              <span class="audio-bar-seg"></span>
+              <span class="audio-bar-seg"></span>
+              <span class="audio-bar-seg"></span>
+            </div>
+          </div>
+
+          <div class="glyph-phone-container" title="Click any LED segment to illuminate with sound!">
+            <svg class="glyph-svg" viewBox="0 0 200 360">
+              <!-- Camera Outer Broken Ring Segments -->
+              <path id="glyph-cam-1" class="glyph-strip" d="M 68 85 A 36 36 0 0 1 106 50" />
+              <path id="glyph-cam-2" class="glyph-strip" d="M 124 64 A 36 36 0 0 1 126 108" />
+              <path id="glyph-cam-3" class="glyph-strip" d="M 110 123 A 36 36 0 0 1 70 116" />
+
+              <!-- Top Diagonal Slash Strip -->
+              <path id="glyph-slash" class="glyph-strip" d="M 148 42 L 174 68" />
+
+              <!-- Center Coil Arc Segments -->
+              <path id="glyph-center-arc-1" class="glyph-strip" d="M 52 170 A 52 52 0 0 1 148 170" />
+              <path id="glyph-center-arc-2" class="glyph-strip" d="M 148 190 A 52 52 0 0 1 52 190" />
+              <path id="glyph-center-vert" class="glyph-strip" d="M 160 160 L 160 210" />
+
+              <!-- Bottom Exclamation Strip (Battery Meter) -->
+              <line id="glyph-batt-line" class="glyph-strip" x1="100" y1="265" x2="100" y2="310" />
+              <circle id="glyph-batt-dot" class="glyph-strip" cx="100" cy="328" r="4" style="stroke-width: 8;" />
+              
+              <!-- Top Mic Dot -->
+              <circle id="glyph-top-dot" class="glyph-strip" cx="100" cy="32" r="3" style="stroke-width: 6;" />
+            </svg>
+          </div>
+
+          <div class="glyph-controls">
+            <button class="glyph-control-btn glyph-mode-btn" data-mode="pulse">PULSE</button>
+            <button class="glyph-control-btn glyph-mode-btn" data-mode="breach">BREACH</button>
+            <button class="glyph-control-btn glyph-mode-btn" data-mode="battery">BATTERY</button>
+            <button class="glyph-control-btn glyph-mode-btn" data-mode="torch">MAX</button>
+            <button class="glyph-control-btn glyph-mode-btn" data-mode="off">OFF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 1: ABOUT ME (EDITORIAL EDIT)
+         ==================================================================== -->
+    <section id="about" class="section-clean">
+      <div class="section-head">
+        <div>
+          <div class="section-number"><span class="red-indicator"></span>01 // PHILOSOPHY</div>
+          <h2 class="section-title-clean">About Me & Under The Hood</h2>
+        </div>
+        <span class="section-caption">Core Approach</span>
+      </div>
+
+      <div class="about-flow-grid">
+        <!-- Content Card -->
+        <div class="about-content-card liquid-panel">
+          <p class="about-quote-highlight">
+            "I'd rather understand how something works than just know how to use it."
+          </p>
+          <p class="about-prose">
+            I'm studying IT and learning cybersecurity, networking, and coding. I really want to understand how computers talk to each other, why security holes happen, and how to fix them.
+          </p>
+          <p class="about-prose">
+            I'm still early in my journey, but I focus on building solid basics, staying curious, and practicing every day. Every new challenge is just another chance to learn something useful.
+          </p>
+        </div>
+
+        <!-- Telemetry Screen -->
+        <div class="telemetry-card liquid-panel">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">LAB TELEMETRY</span>
+              <button class="icon-btn" id="toggle-telemetry-btn">[INSPECT]</button>
+            </div>
+            <div class="telemetry-screen" id="about-telemetry-view">
+              <div style="color: var(--accent-red); font-weight: 700; margin-bottom: 8px;">[SYSTEM STATUS // LAB NOTES]</div>
+              <div style="color: var(--text-primary);">> OPERATOR: RYOEH</div>
+              <div style="color: var(--text-secondary);">> FOCUS: Networking, cybersecurity & software basics</div>
+              <div style="color: var(--text-secondary);">> RULE 1: Understand how things work under the hood</div>
+              <div style="color: var(--text-secondary);">> RULE 2: Break things in a safe lab to see why they break</div>
+              <div style="color: var(--text-muted); margin-top: 10px;">> STATUS: Testing, practicing, and getting better every day</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: QUALIFICATIONS (AIRY 3-COLUMN)
+         ==================================================================== -->
+    <section id="qualifications" class="section-clean">
+      <div class="section-head">
+        <div>
+          <div class="section-number"><span class="red-indicator"></span>02 // CREDENTIALS</div>
+          <h2 class="section-title-clean">Certifications & Qualifications</h2>
+        </div>
+        <span class="section-caption">Verified Foundation</span>
+      </div>
+
+      <div class="certs-flow-grid">
+        <!-- Cert 1 -->
+        <div class="cert-card-clean liquid-panel">
+          <div>
+            <div class="cert-top">
+              <span class="cert-icon">🇬🇧</span>
+              <span class="cert-num">01 / 03</span>
+            </div>
+            <h3 class="cert-title">Cambridge English B1 Preliminary</h3>
+            <p class="cert-text" style="margin-top: 12px;">
+              Certified English skills. Helps me read technical documentation, write code, and communicate easily with people worldwide.
+            </p>
+          </div>
+          <div class="cert-bottom">
+            <span>STATUS: VERIFIED</span>
+            <span class="red-indicator"></span>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="cert-card-clean liquid-panel">
+          <div>
+            <div class="cert-top">
+              <span class="cert-icon">💻</span>
+              <span class="cert-num">02 / 03</span>
+            </div>
+            <h3 class="cert-title">ICDL Essentials</h3>
+            <p class="cert-text" style="margin-top: 12px;">
+              Key computer and digital skills: operating systems, computer hardware fundamentals, and everyday software tools.
+            </p>
+          </div>
+          <div class="cert-bottom">
+            <span>STATUS: VERIFIED</span>
+            <span class="red-indicator"></span>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="cert-card-clean liquid-panel">
+          <div>
+            <div class="cert-top">
+              <span class="cert-icon">🛡️</span>
+              <span class="cert-num">03 / 03</span>
+            </div>
+            <h3 class="cert-title">Introduction to Cybersecurity</h3>
+            <p class="cert-text" style="margin-top: 12px;">
+              Core security knowledge: understanding digital threats, basic hacking concepts, cryptography, and digital defense basics.
+            </p>
+          </div>
+          <div class="cert-bottom">
+            <span>STATUS: VERIFIED</span>
+            <span class="red-indicator"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3: INTERACTIVE LAB
+         ==================================================================== -->
+    <section id="lab" class="section-clean">
+      <div class="section-head">
+        <div>
+          <div class="section-number"><span class="red-indicator"></span>03 // INTERACTIVE LAB</div>
+          <h2 class="section-title-clean">Cyber Arcade & Synth Lab</h2>
+        </div>
+        <span class="section-caption">Interactive Playground</span>
+      </div>
+
+      <div class="lab-flow-grid">
+        <!-- Panel 1: Cyber Packet Runner (Snake Game) -->
+        <div class="arcade-panel liquid-panel">
+          <div class="lab-panel-header">
+            <div class="panel-header-left">
+              <span class="red-indicator"></span>
+              <h3 class="card-title-display" style="font-size: 1.15rem; margin: 0;">CYBER PACKET RUNNER</h3>
+            </div>
+            <button class="icon-btn" id="game-start-btn">START</button>
+          </div>
+
+          <div class="arcade-score-bar">
+            <div>DATA PACKETS: <span class="val" id="game-score-val">0</span></div>
+            <div>HIGH SEC: <span class="val" id="game-high-val">0</span></div>
+          </div>
+
+          <div class="arcade-screen-container">
+            <canvas id="game-canvas" width="336" height="224"></canvas>
+
+            <div class="arcade-controls-mobile">
+              <div></div>
+              <button class="dpad-btn" id="dpad-up" title="Up">▲</button>
+              <div></div>
+              <button class="dpad-btn" id="dpad-left" title="Left">◀</button>
+              <button class="dpad-btn" id="dpad-down" title="Down">▼</button>
+              <button class="dpad-btn" id="dpad-right" title="Right">▶</button>
+            </div>
+          </div>
+          
+          <div class="arcade-hint">
+            <span>KEYBOARD: [W A S D] or [ARROWS] // [SPACE] TO PAUSE</span>
+          </div>
+        </div>
+
+        <!-- Panel 2: Glyph Sound Composer (Beat & Light Synthesizer) -->
+        <div class="composer-panel liquid-panel">
+          <div class="lab-panel-header">
+            <div class="panel-header-left">
+              <span class="pulse-white-dot"></span>
+              <h3 class="card-title-display" style="font-size: 1.15rem; margin: 0;">GLYPH COMPOSER // SYNTH</h3>
+            </div>
+            <span class="badge-subtle">4 CHANNELS</span>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 4px 0 16px 0;">
+            Hit pads to trigger pentatonic synth chords and light up the Glyph Light Engine.
+          </p>
+
+          <div class="composer-grid">
+            <div class="composer-pad" data-pad="0" title="Trigger C4 Sub Bass + Battery Glyph">
+              <div class="composer-pad-led"></div>
+              <span class="pad-title">PAD 01 // SUB BASS</span>
+              <span class="pad-sub">[C4 PITCH + BATTERY]</span>
+            </div>
+            <div class="composer-pad" data-pad="1" title="Trigger E4 Synth Lead + Camera Glyph">
+              <div class="composer-pad-led"></div>
+              <span class="pad-title">PAD 02 // SYNTH LEAD</span>
+              <span class="pad-sub">[E4 PITCH + CAMERA]</span>
+            </div>
+            <div class="composer-pad" data-pad="2" title="Trigger G4 Cyber Arp + Slash Glyph">
+              <div class="composer-pad-led"></div>
+              <span class="pad-title">PAD 03 // CYBER ARP</span>
+              <span class="pad-sub">[G4 PITCH + SLASH]</span>
+            </div>
+            <div class="composer-pad" data-pad="3" title="Trigger C5 High Flash + All LEDs">
+              <div class="composer-pad-led"></div>
+              <span class="pad-title">PAD 04 // GLYPH FLASH</span>
+              <span class="pad-sub">[C5 PITCH + ALL LED]</span>
+            </div>
+          </div>
+
+          <div class="composer-quick-actions">
+            <button class="btn-clean-secondary" id="btn-quick-pulse" style="flex: 1; padding: 8px 12px; font-size: 0.78rem;">PULSE LIGHT ENGINE</button>
+            <button class="btn-clean-secondary" id="btn-quick-breach" style="flex: 1; padding: 8px 12px; font-size: 0.78rem;">TRIGGER BREACH ALARM</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cyber Terminal / Debug Shell (Full Width) -->
+      <div id="terminal-section" class="terminal-panel liquid-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h3 class="card-title-display">SYS.SHELL // DEBUG CONSOLE</h3>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">v2.6.0</span>
+        </div>
+
+        <div class="terminal-box" id="terminal-box">
+          <div id="terminal-output">
+            <div class="terminal-line">
+              <span class="terminal-prompt">operator@system:~$</span>
+              <span class="terminal-output highlight">system-boot --verbose</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">CYBER MATRIX OS [Version 2.6.0] // Architecture Active</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">Type <span style="color:var(--text-primary); font-weight:700;">help</span> or click shortcuts below to interact.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">operator@system:~$</span>
+          <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command (e.g. scan, certs, quote)..." autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="terminal-shortcuts">
+          <span class="term-tag" data-cmd="whoami">whoami</span>
+          <span class="term-tag" data-cmd="certs">certs</span>
+          <span class="term-tag" data-cmd="mindset">mindset</span>
+          <span class="term-tag" data-cmd="scan">scan</span>
+          <span class="term-tag" data-cmd="quote">quote</span>
+          <span class="term-tag" data-cmd="clear">clear</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 4: MINDSET & GOALS
+         ==================================================================== -->
+    <section id="mindset" class="section-clean">
+      <div class="section-head">
+        <div>
+          <div class="section-number"><span class="red-indicator"></span>04 // PRINCIPLES</div>
+          <h2 class="section-title-clean">Mindset & Skill Building</h2>
+        </div>
+        <span class="section-caption">Core Code</span>
+      </div>
+
+      <div class="mindset-flow-grid">
+        <!-- Mindset Card -->
+        <div class="mindset-card liquid-panel">
+          <h3 class="card-title-display">Core Rules</h3>
+
+          <div class="mindset-list">
+            <div class="switch-item">
+              <div class="switch-info">
+                <span class="switch-num">01</span>
+                <span class="switch-text">Understand the basics first.</span>
+              </div>
+              <div class="nothing-switch active" title="Toggle state"></div>
+            </div>
+
+            <div class="switch-item">
+              <div class="switch-info">
+                <span class="switch-num">02</span>
+                <span class="switch-text">Learn by doing, not just watching.</span>
+              </div>
+              <div class="nothing-switch active" title="Toggle state"></div>
+            </div>
+
+            <div class="switch-item">
+              <div class="switch-info">
+                <span class="switch-num">03</span>
+                <span class="switch-text">Don't be afraid to break things in a safe lab.</span>
+              </div>
+              <div class="nothing-switch active" title="Toggle state"></div>
+            </div>
+
+            <div class="switch-item">
+              <div class="switch-info">
+                <span class="switch-num">04</span>
+                <span class="switch-text">Focus on steady progress and solving real problems.</span>
+              </div>
+              <div class="nothing-switch active" title="Toggle state"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Goals Card -->
+        <div class="goals-card liquid-panel">
+          <h3 class="card-title-display">Building Real Skills</h3>
+
+          <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
+            My goal is to build strong IT skills step by step. I'd rather build real skills than rush to collect titles I can't back up.
+          </p>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            I don't pretend to know everything. I'm just here to learn, test things, and get better at what I do.
+          </p>
+
+          <div class="led-progress-container">
+            <div class="led-bar-label">
+              <span>SKILLS FOUNDATION</span>
+              <span style="color: var(--text-primary); font-weight: 700;">80% [PHASE 1]</span>
+            </div>
+            <div class="led-segments">
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit"></div>
+              <div class="led-segment lit accent"></div>
+              <div class="led-segment"></div>
+              <div class="led-segment"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 5: ZENITSU AGATSUMA QUOTE (CINEMATIC LIQUID GLASS)
+         ==================================================================== -->
+    <section id="quote" class="section-clean">
+      <div class="quote-card liquid-panel">
+        <div class="quote-badge">⚡ THUNDER BREATHING // FIRST FORM ⚡</div>
+        <div class="quote-red-line"></div>
+        <blockquote class="quote-text">
+          "If you can only do one thing, hone it to perfection."
+        </blockquote>
+        <cite class="quote-author">— JIGORO KUWAJIMA</cite>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="footer-left">
+        <span class="red-indicator"></span>
+        <span>RYOEH // IT & CYBERSECURITY PORTFOLIO</span>
+      </div>
+      <div>
+        <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">▲ BACK TO TOP</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
