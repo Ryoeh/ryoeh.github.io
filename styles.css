@@ -1276,15 +1276,6 @@ body {
   backdrop-filter: blur(8px);
 }
 
-.quote-red-line {
-  width: 48px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
-  margin-bottom: 22px;
-  box-shadow: 0 0 12px var(--accent-gold), 0 0 6px var(--accent-red);
-  border-radius: var(--radius-pill);
-}
-
 .quote-text {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3.2vw, 1.85rem);
