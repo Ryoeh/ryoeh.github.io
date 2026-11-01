@@ -56,3 +56,8 @@ Explore the portfolio and try out the interactive features:
 **[ryoeh.github.io](https://ryoeh.github.io/)**
 
 ---
+
+## License
+
+This project is released under the MIT License.
+See the LICENSE file for details.
