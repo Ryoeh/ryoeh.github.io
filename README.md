@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://ryoeh.github.io">
-    <img src="Website-rounded.png" width="100%" alt="Website preview">
+    <img src="images/screenshot/Website-rounded.png" width="100%" alt="Website preview">
   </a>
 </p>
 
