@@ -2,8 +2,14 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Ryoeh</title>
+    <script>
+    try {
+      const savedTheme = window.localStorage.getItem('ryoeh-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') document.documentElement.setAttribute('data-theme', savedTheme);
+    } catch (error) { /* Storage may be disabled for local files. */ }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23D71921'/></svg>">
 </head>
@@ -258,7 +264,7 @@
         <div class="cert-card-clean liquid-panel">
           <div>
             <div class="cert-top">
-              <span class="cert-icon">🇬🇧</span>
+              <span class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span>
               <span class="cert-num">01 / 03</span>
             </div>
             <h3 class="cert-title">Cambridge English B1 Preliminary</h3>
@@ -276,7 +282,7 @@
         <div class="cert-card-clean liquid-panel">
           <div>
             <div class="cert-top">
-              <span class="cert-icon">💻</span>
+              <span class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="12" rx="2"/><path d="M8 20h8M12 16.5V20M8.5 9l-2 2 2 2m3 0 2.5-4"/></svg></span>
               <span class="cert-num">02 / 03</span>
             </div>
             <h3 class="cert-title">ICDL Essentials</h3>
@@ -294,7 +300,7 @@
         <div class="cert-card-clean liquid-panel">
           <div>
             <div class="cert-top">
-              <span class="cert-icon">🛡️</span>
+              <span class="cert-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 7 3v5c0 4.6-3 8-7 10-4-2-7-5.4-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
               <span class="cert-num">03 / 03</span>
             </div>
             <h3 class="cert-title">Introduction to Cybersecurity</h3>
@@ -461,7 +467,7 @@
                 <span class="switch-num">01</span>
                 <span class="switch-text">Understand the basics first.</span>
               </div>
-              <div class="nothing-switch active" title="Toggle state"></div>
+              
             </div>
 
             <div class="switch-item">
@@ -469,7 +475,7 @@
                 <span class="switch-num">02</span>
                 <span class="switch-text">Learn by doing, not just watching.</span>
               </div>
-              <div class="nothing-switch active" title="Toggle state"></div>
+              
             </div>
 
             <div class="switch-item">
@@ -477,7 +483,7 @@
                 <span class="switch-num">03</span>
                 <span class="switch-text">Don't be afraid to break things in a safe lab.</span>
               </div>
-              <div class="nothing-switch active" title="Toggle state"></div>
+              
             </div>
 
             <div class="switch-item">
@@ -485,7 +491,7 @@
                 <span class="switch-num">04</span>
                 <span class="switch-text">Focus on steady progress and solving real problems.</span>
               </div>
-              <div class="nothing-switch active" title="Toggle state"></div>
+              
             </div>
           </div>
         </div>
@@ -501,24 +507,6 @@
             I don't pretend to know everything. I'm just here to learn, test things, and get better at what I do.
           </p>
 
-          <div class="led-progress-container">
-            <div class="led-bar-label">
-              <span>SKILLS FOUNDATION</span>
-              <span style="color: var(--text-primary); font-weight: 700;">80% [PHASE 1]</span>
-            </div>
-            <div class="led-segments">
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit"></div>
-              <div class="led-segment lit accent"></div>
-              <div class="led-segment"></div>
-              <div class="led-segment"></div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -528,6 +516,7 @@
          ==================================================================== -->
     <section id="quote" class="section-clean">
       <div class="quote-card liquid-panel">
+        <div class="quote-red-line"></div>
         <blockquote class="quote-text">
           "If you can only do one thing, hone it to perfection."
         </blockquote>
