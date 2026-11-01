@@ -1160,7 +1160,7 @@ body {
    ========================================================================== */
 .quote-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(8,8,8,0.85) 0%, rgba(18,14,8,0.85) 100%);
+  background: linear-gradient(135deg, rgba(8,8,8,0.85) 0%, rgba(18,14,8,0.85) 100%), url('images/media/zenitsu.jpg');
   background-size: cover;
   background-position: center 30%;
   border: 1px solid rgba(255,255,255,0.08);
