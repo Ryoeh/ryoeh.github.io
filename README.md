@@ -59,10 +59,10 @@ Explore the portfolio and try out the interactive features:
 
 ## License
 
-This project is distributed under the **Ryoeh Proprietary License v1.2**.
+This project is licensed under the **Ryoeh Proprietary License v1.2**.
 
-Viewing and studying the source code are permitted. Any reuse, reproduction, modification, redistribution, or commercial use requires prior written authorization from the author.
+All rights not expressly granted by the license are reserved. Viewing the source code does not grant permission to reuse, modify, reproduce, or redistribute it.
 
-For the complete terms and conditions, see the [LICENSE](./LICENSE) file.
+For the complete license terms, see the [Ryoeh Proprietary License v1.2](https://github.com/Ryoeh/Ryoeh-License/blob/main/versions/RYOEH-PROPRIETARY-LICENSE-v1.2.txt).
 
-For authorization requests, please open a GitHub Issue.
+For permission requests, please open an [Issue](https://github.com/Ryoeh/Ryoeh-License/issues).
