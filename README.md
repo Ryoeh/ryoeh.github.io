@@ -59,5 +59,5 @@ Explore the portfolio and try out the interactive features:
 
 ## License
 
-This project is released under the MIT License.
-See the LICENSE file for details.
+This project is released under the [MIT License](LICENSE).
+See the [LICENSE](LICENSE) file for details.
