@@ -112,10 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sound toggle button in status bar
   const soundToggleBtn = document.getElementById('sound-toggle-btn');
   if (soundToggleBtn) {
+    soundToggleBtn.setAttribute('aria-pressed', String(soundEnabled));
     soundToggleBtn.addEventListener('click', () => {
       initAudio();
       soundEnabled = !soundEnabled;
       soundToggleBtn.classList.toggle('active', soundEnabled);
+      soundToggleBtn.setAttribute('aria-pressed', String(soundEnabled));
       const textSpan = soundToggleBtn.querySelector('.btn-text');
       if (textSpan) textSpan.textContent = soundEnabled ? 'AUDIO: ON' : 'AUDIO: OFF';
       soundToggleBtn.setAttribute('title', soundEnabled ? 'Audio Active (Click to mute)' : 'Audio Muted (Click to enable)');
@@ -126,26 +128,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Theme toggle button
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   if (themeToggleBtn) {
+    const syncThemeControl = () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      themeToggleBtn.classList.toggle('active', isLight);
+      themeToggleBtn.setAttribute('aria-pressed', String(isLight));
+      themeToggleBtn.setAttribute('title', isLight ? 'Light Theme Active (click for dark)' : 'Dark Theme Active (click for light)');
+    };
+    syncThemeControl();
     themeToggleBtn.addEventListener('click', () => {
       playClick(1000);
       const current = document.documentElement.getAttribute('data-theme');
       const nextTheme = current === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', nextTheme);
-      themeToggleBtn.classList.toggle('active', nextTheme === 'light');
+      try { window.localStorage.setItem('ryoeh-theme', nextTheme); } catch (error) { /* Keep theme usable if storage is unavailable. */ }
       const textSpan = themeToggleBtn.querySelector('.btn-text');
       if (textSpan) textSpan.textContent = nextTheme === 'light' ? 'THEME: LIGHT' : 'THEME: DARK';
-      themeToggleBtn.setAttribute('title', nextTheme === 'light' ? 'Light Theme Active' : 'Dark Theme Active');
+      syncThemeControl();
     });
   }
-
   // Torch Mode toggle
   const torchToggleBtn = document.getElementById('torch-toggle-btn');
   if (torchToggleBtn) {
+    torchToggleBtn.setAttribute('aria-pressed', String(document.body.classList.contains('torch-active')));
     torchToggleBtn.addEventListener('click', () => {
       playClick(1600);
       document.body.classList.toggle('torch-active');
       const isActive = document.body.classList.contains('torch-active');
       torchToggleBtn.classList.toggle('active', isActive);
+      torchToggleBtn.setAttribute('aria-pressed', String(isActive));
       const textSpan = torchToggleBtn.querySelector('.btn-text');
       if (textSpan) textSpan.textContent = isActive ? 'TORCH: ACTIVE' : 'TORCH: OFF';
       torchToggleBtn.setAttribute('title', isActive ? 'Torch Mode ON (Click to turn off)' : 'Torch Mode OFF (Click to flash)');
@@ -254,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const baseAlpha = isLight ? 0.15 : 0.08;
+      const baseAlpha = isLight ? 0.065 : 0.045;
       const dotColor = isLight ? '0, 0, 0' : '255, 255, 255';
 
       for (let c = 0; c <= cols; c++) {
@@ -268,13 +278,13 @@ document.addEventListener('DOMContentLoaded', () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           let alpha = baseAlpha;
-          let dotRadius = 1.2;
+          let dotRadius = 1.1;
 
           // Proximity light glow
           if (dist < 150) {
             const factor = 1 - dist / 150;
-            alpha = baseAlpha + factor * 0.65;
-            dotRadius = 1.2 + factor * 2.2;
+            alpha = baseAlpha + factor * 0.27;
+            dotRadius = 1.1 + factor * 1.35;
           }
 
           // Ripple effect
@@ -282,8 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const rDist = Math.abs(Math.sqrt((x - ripple.x) ** 2 + (y - ripple.y) ** 2) - ripple.radius);
             if (rDist < 30) {
               const rFactor = (1 - rDist / 30) * ripple.opacity;
-              alpha = Math.min(1, alpha + rFactor * 0.8);
-              dotRadius = Math.max(dotRadius, 1.2 + rFactor * 2.5);
+              alpha = Math.min(1, alpha + rFactor * 0.42);
+              dotRadius = Math.max(dotRadius, 1.1 + rFactor * 1.5);
             }
           }
 
@@ -718,17 +728,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const padTones = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5 Pentatonic
 
   composerPads.forEach((pad, index) => {
-    pad.addEventListener('mousedown', () => {
+    pad.setAttribute('role', 'button');
+    pad.setAttribute('tabindex', '0');
+    pad.setAttribute('aria-label', pad.title || `Play synth pad ${index + 1}`);
+    pad.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        triggerPad(index, pad);
+      }
+    });
+    pad.addEventListener('pointerdown', () => {
       triggerPad(index, pad);
     });
 
-    pad.addEventListener('mouseup', () => {
+    pad.addEventListener('pointerup', () => {
       pad.classList.remove('active');
     });
 
-    pad.addEventListener('mouseleave', () => {
+    pad.addEventListener('pointerleave', () => {
       pad.classList.remove('active');
     });
+  });
+
+  composerPads.forEach(pad => {
+    pad.addEventListener('pointercancel', () => pad.classList.remove('active'));
   });
 
   function triggerPad(idx, padEl) {
@@ -911,25 +934,6 @@ Currently studying IT and learning how computers talk, why flaws happen, and how
   });
 
   // ==========================================================================
-  // 8. INTERACTIVE NOTHING SWITCHES (MINDSET CARD)
-  // ==========================================================================
-  const switches = document.querySelectorAll('.nothing-switch');
-  switches.forEach(sw => {
-    sw.addEventListener('click', () => {
-      sw.classList.toggle('active');
-      const isActive = sw.classList.contains('active');
-      playClick(isActive ? 1400 : 700);
-
-      // Flash corresponding glyph
-      const randomStrip = glyphStrips[Math.floor(Math.random() * glyphStrips.length)];
-      if (randomStrip) {
-        randomStrip.classList.add('active');
-        setTimeout(() => randomStrip.classList.remove('active'), 150);
-      }
-    });
-  });
-
-  // ==========================================================================
   // 9. TELEMETRY ACTION ON ABOUT CARD
   // ==========================================================================
   const telemetryBtn = document.getElementById('toggle-telemetry-btn');
@@ -981,12 +985,8 @@ Currently studying IT and learning how computers talk, why flaws happen, and how
       playClick(1500);
       dots.forEach((dot, idx) => {
         setTimeout(() => {
-          dot.style.transform = 'scale(1.35)';
-          dot.style.boxShadow = '0 0 16px #ffffff, 0 0 28px rgba(255,255,255,0.7)';
-          setTimeout(() => {
-            dot.style.transform = '';
-            dot.style.boxShadow = '';
-          }, 180);
+          dot.classList.add('ripple-active');
+          setTimeout(() => dot.classList.remove('ripple-active'), 180);
         }, idx * 12);
       });
     });
