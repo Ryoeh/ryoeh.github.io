@@ -1241,7 +1241,7 @@ body {
    ========================================================================== */
 .quote-card {
   position: relative;
-  background-image: linear-gradient(135deg, rgba(8, 8, 8, 0.82) 0%, rgba(18, 14, 8, 0.88) 100%), url('zenitsu.jpg');
+  background-image: linear-gradient(135deg, rgba(8, 8, 8, 0.82) 0%, rgba(18, 14, 8, 0.88) 100%), url('images/media/zenitsu.jpg');
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
